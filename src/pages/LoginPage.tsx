@@ -1,8 +1,8 @@
 
 export default function LoginPage(){
     return (
-        <div>
-            
+        <div className="loginPage">
+            hiii
         </div>
     )
 }
