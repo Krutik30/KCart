@@ -6,10 +6,13 @@ function App() {
   return (
     <Box
       sx={{
-        backgroundColor: 'primary.dark',
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
-      hiiiiiiii
       <LoginPage />
     </Box>
   )
