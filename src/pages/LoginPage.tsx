@@ -59,7 +59,7 @@ export default function LoginPage(){
                             handleSubmit()
                         }}
                     >
-                        Contained
+                        Login
                     </Button>
                 </Stack>
             </CardContent>
