@@ -17,14 +17,32 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "sequelie": "ts-node node_modules/.bin/sequelize ",
+    "db:migrate": "yarn run sequelize db:migrate",
+    "db:drop": "yarn run sequelize db:drop",
+    "db:create": "yarn run sequelize db:create",
+    "db:seed-dev": "yarn run sequelize db:seed:all",
+    "db:reset": "yarn run db:drop && yarn run db:create && yarn run db:migrate && yarn run db:seed-dev"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.0.0",
+    "@supabase/supabase-js": "^2.39.2",
+    "bcrypt": "^5.1.1",
+    "class-validator": "^0.14.0",
+    "dotenv": "^16.3.1",
+    "pactum": "^3.5.1",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sequelize": "^6.35.2",
+    "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

@@ -1,8 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { USER_REPOSITORY } from '../core/constant';
+import { User } from './user.entity';
 
-@Controller('user')
-export class UserController {
-    constructor() {
-        
-    }
-}
+export const userController = [
+    {
+        provide: USER_REPOSITORY,
+        useValue: User,
+    },
+];

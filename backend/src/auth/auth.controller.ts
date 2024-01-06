@@ -1,20 +1,23 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Controller, Body, Post, UseGuards, Request } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
 import { AuthService } from './auth.service';
+import { UserDto } from '../user/dto/user.dto';
+import { DoesUserExist } from '../core/gaurd/doesUserExist.guard';
 
 @Controller('auth')
 export class AuthController {
     constructor(private authService: AuthService) { }
 
-    // post request of /auth/signUp route
-    @Post('signUp')
-    signUp() {
-        return this.authService.signUp();
+    @UseGuards(AuthGuard('local'))
+    @Post('login')
+    async login(@Request() req) {
+        return await this.authService.login(req.user);
     }
 
-    @HttpCode(HttpStatus.OK)
-    @Post('signIn')
-    signIn() {
-        return this.authService.signIn();
+    @UseGuards(DoesUserExist)
+    @Post('signup')
+    async signUp(@Body() user: UserDto) {
+        return await this.authService.create(user);
     }
-
 }
